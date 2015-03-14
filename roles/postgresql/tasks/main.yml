@@ -1,0 +1,20 @@
+---
+- name: Install postgresql
+  apt: pkg=postgresql
+
+- name: Install postgresql-contrib
+  apt: pkg=postgresql-contrib
+
+- name: Install libpq-dev
+  apt: pkg=libpq-dev
+
+- name: Install python-psycopg2
+  apt: pkg=python-psycopg2
+
+- name: Create user
+  postgresql_user: name=postgres password=postgres 
+  sudo_user: postgres
+
+- name: Create database
+  postgresql_db: name=mydb
+  sudo_user: postgres

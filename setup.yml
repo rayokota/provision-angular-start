@@ -1,0 +1,11 @@
+---
+- hosts: all
+
+  sudo: true
+
+  roles:
+    - common
+    - postgresql
+    - dart
+    - generator
+    - { role: generate_testapp, when: "generate_testapp is defined and generate_testapp|bool" }

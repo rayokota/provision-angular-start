@@ -1,0 +1,15 @@
+---
+- name: Install apt-transport-https
+  apt: pkg=apt-transport-https
+
+- name: Get the Google Linux package signing key
+  shell: curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+
+- name: Set up the location of the stable repository
+  shell: curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Install Dart
+  apt: pkg=dart
